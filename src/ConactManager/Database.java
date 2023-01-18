@@ -48,6 +48,4 @@ public class Database {
         return s.toString();
     }
 
-    public void remove(String deleteName) {
-    }
 }

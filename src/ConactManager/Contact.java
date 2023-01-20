@@ -1,21 +1,59 @@
 package ConactManager;
 
-public class Contact {
-    private String name;
-    private String email;
-    private String number;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
-    public Contact (String name, String email, String number){
-        this.name = name;
-        this.email = email;
-        this.number = number;
+public class Contact {
+
+    private String Name, Phone;
+
+    public Contact(String Name, String Phone) {
+        this.Name = Name;
+        this.Phone = Phone;
     }
 
-    public String getName() { return this.name; }
-    public String getEmail() { return this.email; }
-    public String getNumber() { return this.number; }
+    public Contact() {
+
+    }
 
     public String toString() {
-        return this.name + "\t| " + this.email + "\t| " + this.number;
+        return Name + " | " + Phone;
+    }
+
+    public void setName(String s) {
+        Name = s;
+    }
+
+    public void setPhone(String e) {
+        Phone = e;
+    }
+
+
+    static void write() {
+        try {
+            Contact contact;
+            contact = new Contact();
+            Contact c = contact;
+
+            File file = new File("contacts.txt");
+
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            try (PrintWriter output = new PrintWriter(new FileWriter(
+                    "contacts.txt", true))) {
+                output.printf("%s\r\n", c);
+            } catch (Exception ignored) {
+            }
+
+            System.out.println("Your contact has been saved.");
+        }
+
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

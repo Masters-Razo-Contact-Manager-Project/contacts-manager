@@ -4,15 +4,14 @@ import java.io.*;
 import java.util.*;
 
 public class ContactsData {
-    public static void main(String args[]) throws IOException {
+    public static void main(String args[]) {
         Contact contact;
         contact = new Contact();
         int action = 0;
 
         ArrayList<Contact> contacts = new ArrayList<Contact>();
-        while (action != 6) {
+        while (action != 5) {
 
-//
             System.out.println("1. View contacts.\n" +
                 "2. Add a new contact.\n" +
                 "3. Search a contact by name.\n" +
@@ -23,7 +22,7 @@ public class ContactsData {
             reader.useDelimiter("\n");
             action = reader.nextInt();
 
-            if (action <= 0 || action > 6) {
+            if (action <= 0 || action > 5) {
                 System.out.println("Invalid selection. ");
 
             }
@@ -60,8 +59,6 @@ public class ContactsData {
                     } catch (FileNotFoundException e) {
 
                     }
-                    System.out.println("\n" + counter + " contacts in records.");
-
                 }
 
                 break;
@@ -90,7 +87,6 @@ public class ContactsData {
 
                         File file = new File("contacts.txt");
 
-                        // If file doesn't exists, then create it.
                         if (!file.exists()) {
                             file.createNewFile();
                         }
@@ -151,6 +147,15 @@ public class ContactsData {
                     }
 
                     break;
+
+                case 4:
+                    //delete contact goes here
+
+                    break;
+
+                case 5:
+                    System.out.println("Exiting out, thank you.");
+
 
 
         }
